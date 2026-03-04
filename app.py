@@ -123,6 +123,7 @@ BUFFER_FILE = "today_buffer.json"
 ACTIVE_FILE = "active_task.json"
 META_CACHE_FILE = "meta_cache.json"
 EMAIL_CACHE_FILE = "email_cache.json"
+WORK_HOURS_CACHE_FILE = "work_hours_cache.json"
 MANAGER_EMAIL = os.getenv("MANAGER_EMAIL")
 USER_INITIALS = os.getenv("USER_INITIALS")
 PRIVATE_EMAIL = os.getenv("PRIVATE_EMAIL", "")
@@ -142,6 +143,33 @@ def load_json(path, default=None):
 def save_json(path, data):
     with open(path, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=4)
+
+def load_work_hours_cache():
+    """Załaduj cache godzin pracy dla dzisiejszego dnia."""
+    cache = load_json(WORK_HOURS_CACHE_FILE, [])
+    today = datetime.now().strftime("%Y-%m-%d")
+    for entry in cache:
+        if entry.get("date") == today:
+            return entry.get("start", "09:00"), entry.get("end", "17:00")
+    return "09:00", "17:00"
+
+def save_work_hours_cache(start: str, end: str):
+    """Zapisz godziny pracy do cache dla dzisiejszego dnia."""
+    cache = load_json(WORK_HOURS_CACHE_FILE, [])
+    today = datetime.now().strftime("%Y-%m-%d")
+    
+    # Usuń istniejący wpis dla dzisiejszego dnia (jeśli istnieje)
+    new_cache = [entry for entry in cache if entry.get("date") != today]
+    
+    # Dodaj nowy wpis
+    new_cache.append({
+        "date": today,
+        "start": start,
+        "end": end
+    })
+    
+    save_json(WORK_HOURS_CACHE_FILE, new_cache)
+    log_event("INFO", f"Zapisano godziny pracy do cache: {start} - {end}")
 
 def round_15(dt):
     # Zaokrąglenie do najbliższych 15 minut (granica 7.5) - użycie integera
@@ -750,6 +778,11 @@ now_r = round_15(datetime.now()).strftime("%H:%M")
 if 'manual_start' not in st.session_state: st.session_state.manual_start = floor_15(datetime.now()).strftime("%H:%M")
 if 'manual_end' not in st.session_state: st.session_state.manual_end = now_r
 if 'last_set' not in st.session_state: st.session_state.last_set = None
+# Cache godzin pracy
+if 'cached_start' not in st.session_state or 'cached_end' not in st.session_state:
+    cached_start, cached_end = load_work_hours_cache()
+    st.session_state.cached_start = cached_start
+    st.session_state.cached_end = cached_end
 
 # Ładowanie słowników z cache (nie automatycznie z Excela)
 if 'meta' not in st.session_state:
@@ -759,8 +792,15 @@ if 'meta' not in st.session_state:
 
 with st.sidebar:
     st.header("⚙️ RAMY CZASOWE")
-    w_s = st.text_input("Start dnia:", value="09:00")
-    w_e = st.text_input("Koniec dnia", value="17:00")
+    w_s = st.text_input("Start dnia:", value=st.session_state.cached_start, key="work_start")
+    w_e = st.text_input("Koniec dnia", value=st.session_state.cached_end, key="work_end")
+    
+    # Sprawdź, czy godziny uległy zmianie i zapisz do cache
+    if w_s != st.session_state.cached_start or w_e != st.session_state.cached_end:
+        save_work_hours_cache(w_s, w_e)
+        st.session_state.cached_start = w_s
+        st.session_state.cached_end = w_e
+    
     try:
         delta = datetime.strptime(w_e, "%H:%M") - datetime.strptime(w_s, "%H:%M")
         pot_daily = delta.total_seconds() / 3600
