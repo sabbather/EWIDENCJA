@@ -1,0 +1,233 @@
+2026-03-02 19:25:28 - INFO - Uruchomienie aplikacji TrackMyDay
+2026-03-02 19:25:28 - INFO - Pobieranie słowników z Excela
+2026-03-02 19:25:28 - INFO - Excel worker: push_data=False, get_meta=True, w_s=09:00, w_e=17:00
+2026-03-02 19:25:37 - INFO - Pobrano słowniki: 42 projektów, 13 charakterów, 36 opisów
+2026-03-02 19:25:37 - INFO - Rozpoczęcie wysyłania raportu e-mail
+2026-03-02 19:25:37 - INFO - EXCEL_PATH: https://pidpolska-my.sharepoint.com/personal/d_swiatek_multicontrol_com/Documents/CARGO/EWIDENCJA_MC/KF%20-%20EWIDENCJA%20-%202026_v2.xlsm
+2026-03-02 19:25:37 - INFO - MANAGER_EMAIL: d.swiatek@multicontrol.com
+2026-03-02 19:25:37 - INFO - USER_INITIALS: KF
+2026-03-02 19:25:45 - INFO - Próba połączenia z Outlook...
+2026-03-02 19:25:47 - INFO - Uruchomiono nową instancję Outlook
+2026-03-02 19:25:49 - INFO - Wysyłam email...
+2026-03-02 19:25:49 - INFO - Raport wysłany pomyślnie na adres: d.swiatek@multicontrol.com
+2026-03-02 19:25:49 - INFO - Kopia UDW wysłana na adres: krzysztof.filipowicz@yahoo.com
+2026-03-03 10:01:12 - INFO - Usunięto 2 starych wpisów z bufora
+2026-03-03 10:01:12 - INFO - Uruchomienie aplikacji TrackMyDay
+2026-03-03 10:01:14 - INFO - Pobieranie słowników z Excela
+2026-03-03 10:01:14 - INFO - Excel worker: push_data=False, get_meta=True, w_s=09:00, w_e=17:00
+2026-03-03 10:01:24 - INFO - Pobrano słowniki: 42 projektów, 13 charakterów, 36 opisów
+2026-03-03 10:13:43 - INFO - Uruchomienie aplikacji TrackMyDay
+2026-03-03 10:13:46 - INFO - Uruchomienie aplikacji TrackMyDay
+2026-03-03 10:13:49 - INFO - Uruchomienie aplikacji TrackMyDay
+2026-03-03 10:13:49 - INFO - Rozpoczęto zadanie: _MULTICONTROL (SYSTEMOWE) - start 09:00
+2026-03-03 10:13:49 - INFO - Uruchomienie aplikacji TrackMyDay
+2026-03-03 10:46:44 - INFO - Uruchomienie aplikacji TrackMyDay
+2026-03-03 10:46:44 - INFO - Zamknięto zadanie: _MULTICONTROL (SYSTEMOWE) - 1.75h
+2026-03-03 10:46:44 - INFO - Uruchomienie aplikacji TrackMyDay
+2026-03-03 11:06:58 - INFO - Rozpoczęcie wysyłania raportu e-mail
+2026-03-03 11:06:58 - INFO - EXCEL_PATH: https://pidpolska-my.sharepoint.com/personal/d_swiatek_multicontrol_com/Documents/CARGO/EWIDENCJA_MC/KF%20-%20EWIDENCJA%20-%202026_v2.xlsm
+2026-03-03 11:06:58 - INFO - MANAGER_EMAIL: d.swiatek@multicontrol.com
+2026-03-03 11:06:58 - INFO - USER_INITIALS: KF
+2026-03-03 11:07:08 - INFO - Próba połączenia z Outlook...
+2026-03-03 11:07:21 - INFO - Uruchomiono nową instancję Outlook
+2026-03-03 11:07:23 - INFO - Wysyłam email...
+2026-03-03 11:07:23 - INFO - Raport wysłany pomyślnie na adres: d.swiatek@multicontrol.com
+2026-03-03 11:07:23 - INFO - Kopia UDW wysłana na adres: krzysztof.filipowicz@yahoo.com
+2026-03-03 11:10:00 - INFO - Rozpoczęcie wysyłania raportu e-mail
+2026-03-03 11:10:00 - INFO - EXCEL_PATH: https://pidpolska-my.sharepoint.com/personal/d_swiatek_multicontrol_com/Documents/CARGO/EWIDENCJA_MC/KF%20-%20EWIDENCJA%20-%202026_v2.xlsm
+2026-03-03 11:10:00 - INFO - MANAGER_EMAIL: d.swiatek@multicontrol.com
+2026-03-03 11:10:00 - INFO - USER_INITIALS: KF
+2026-03-03 11:10:09 - INFO - Próba połączenia z Outlook...
+2026-03-03 11:10:11 - INFO - Uruchomiono nową instancję Outlook
+2026-03-03 11:10:13 - INFO - Wysyłam email...
+2026-03-03 11:10:13 - INFO - Raport wysłany pomyślnie na adres: d.swiatek@multicontrol.com
+2026-03-03 11:10:13 - INFO - Kopia UDW wysłana na adres: krzysztof.filipowicz@yahoo.com
+2026-03-03 11:11:32 - INFO - Uruchomienie aplikacji TrackMyDay
+2026-03-03 11:11:33 - INFO - Pobieranie słowników z Excela
+2026-03-03 11:11:33 - INFO - Excel worker: push_data=False, get_meta=True, w_s=09:00, w_e=17:00
+2026-03-03 11:11:46 - INFO - Pobrano słowniki: 42 projektów, 13 charakterów, 36 opisów
+2026-03-03 11:48:25 - INFO - Rozpoczęcie wysyłania raportu e-mail
+2026-03-03 11:48:25 - INFO - EXCEL_PATH: https://pidpolska-my.sharepoint.com/personal/d_swiatek_multicontrol_com/Documents/CARGO/EWIDENCJA_MC/KF%20-%20EWIDENCJA%20-%202026_v2.xlsm
+2026-03-03 11:48:25 - INFO - MANAGER_EMAIL: d.swiatek@multicontrol.com
+2026-03-03 11:48:25 - INFO - USER_INITIALS: KF
+2026-03-03 11:48:34 - INFO - Próba połączenia z Outlook...
+2026-03-03 11:48:45 - INFO - Uruchomiono nową instancję Outlook
+2026-03-03 11:48:47 - INFO - Wysyłam email...
+2026-03-03 11:48:48 - INFO - Raport wysłany pomyślnie na adres: d.swiatek@multicontrol.com
+2026-03-03 11:48:48 - INFO - Kopia UDW wysłana na adres: krzysztof.filipowicz@yahoo.com
+2026-03-03 11:54:24 - INFO - Rozpoczęcie wysyłania raportu e-mail
+2026-03-03 11:54:24 - INFO - EXCEL_PATH: https://pidpolska-my.sharepoint.com/personal/d_swiatek_multicontrol_com/Documents/CARGO/EWIDENCJA_MC/KF%20-%20EWIDENCJA%20-%202026_v2.xlsm
+2026-03-03 11:54:24 - INFO - MANAGER_EMAIL: d.swiatek@multicontrol.com
+2026-03-03 11:54:24 - INFO - USER_INITIALS: KF
+2026-03-03 11:54:32 - INFO - Próba połączenia z Outlook...
+2026-03-03 11:54:33 - INFO - Uruchomiono nową instancję Outlook
+2026-03-03 11:54:35 - INFO - Wysyłam email...
+2026-03-03 11:54:36 - INFO - Raport wysłany pomyślnie na adres: d.swiatek@multicontrol.com
+2026-03-03 11:54:36 - INFO - Kopia UDW wysłana na adres: krzysztof.filipowicz@yahoo.com
+2026-03-03 13:21:54 - INFO - Uruchomienie aplikacji TrackMyDay
+2026-03-03 13:21:56 - INFO - Pobieranie słowników z Excela
+2026-03-03 13:21:56 - INFO - Excel worker: push_data=False, get_meta=True, w_s=09:00, w_e=17:00
+2026-03-03 13:22:06 - INFO - Pobrano słowniki: 42 projektów, 13 charakterów, 36 opisów
+2026-03-03 13:22:43 - INFO - Uruchomienie aplikacji TrackMyDay
+2026-03-03 13:22:44 - INFO - Uruchomienie aplikacji TrackMyDay
+2026-03-03 13:22:44 - INFO - Rozpoczęto zadanie: _MULTICONTROL (SYSTEMOWE) - start 13:15
+2026-03-03 13:22:45 - INFO - Uruchomienie aplikacji TrackMyDay
+2026-03-03 14:28:57 - INFO - Uruchomienie aplikacji TrackMyDay
+2026-03-03 14:28:57 - INFO - Pobieranie słowników z Excela
+2026-03-03 14:28:57 - INFO - Excel worker: push_data=False, get_meta=True, w_s=09:00, w_e=17:00
+2026-03-03 14:29:12 - INFO - Pobrano słowniki: 42 projektów, 13 charakterów, 36 opisów
+2026-03-03 14:29:12 - INFO - Zamknięto zadanie: _MULTICONTROL (SYSTEMOWE) - 1.25h
+2026-03-03 14:29:12 - INFO - Uruchomienie aplikacji TrackMyDay
+2026-03-03 14:30:01 - INFO - Uruchomienie aplikacji TrackMyDay
+2026-03-03 14:30:01 - INFO - Rozpoczęto zadanie: _MULTICONTROL (SYSTEMOWE) - start 14:15
+2026-03-03 14:30:01 - INFO - Uruchomienie aplikacji TrackMyDay
+2026-03-03 15:36:37 - INFO - Uruchomienie aplikacji TrackMyDay
+2026-03-03 15:36:37 - INFO - Pobieranie słowników z Excela
+2026-03-03 15:36:37 - INFO - Excel worker: push_data=False, get_meta=True, w_s=09:00, w_e=17:00
+2026-03-03 15:36:47 - INFO - Pobrano słowniki: 42 projektów, 13 charakterów, 36 opisów
+2026-03-03 15:36:47 - INFO - Zamknięto zadanie: _MULTICONTROL (SYSTEMOWE) - 1.25h
+2026-03-03 15:36:47 - INFO - Uruchomienie aplikacji TrackMyDay
+2026-03-03 17:00:34 - INFO - Uruchomienie aplikacji TrackMyDay
+2026-03-03 17:00:35 - INFO - Excel worker: push_data=True, get_meta=False, w_s=09:00, w_e=17:00
+2026-03-03 17:00:46 - INFO - Zapis do Excela zakończony sukcesem
+2026-03-03 17:00:50 - INFO - Zakończono dzień, zapisano 4 zadań do Excela
+2026-03-03 17:00:50 - INFO - Godzina 16:55 już minęła, wysyłam natychmiast
+2026-03-03 17:00:50 - INFO - Rozpoczęcie wysyłania raportu e-mail
+2026-03-03 17:00:50 - INFO - EXCEL_PATH: https://pidpolska-my.sharepoint.com/personal/d_swiatek_multicontrol_com/Documents/CARGO/EWIDENCJA_MC/KF%20-%20EWIDENCJA%20-%202026_v2.xlsm
+2026-03-03 17:00:50 - INFO - MANAGER_EMAIL: d.swiatek@multicontrol.com
+2026-03-03 17:00:50 - INFO - USER_INITIALS: KF
+2026-03-03 17:00:59 - INFO - Próba połączenia z Outlook...
+2026-03-03 17:01:15 - INFO - Uruchomiono nową instancję Outlook
+2026-03-03 17:01:17 - INFO - Wysyłam email...
+2026-03-03 17:01:18 - INFO - Raport wysłany pomyślnie na adres: d.swiatek@multicontrol.com
+2026-03-03 17:01:18 - INFO - Kopia UDW wysłana na adres: krzysztof.filipowicz@yahoo.com
+2026-03-04 09:12:27 - INFO - Usunięto 3 starych wpisów z bufora
+2026-03-04 09:12:27 - INFO - Uruchomienie aplikacji TrackMyDay
+2026-03-04 09:12:27 - INFO - Pobieranie słowników z Excela
+2026-03-04 09:12:27 - INFO - Excel worker: push_data=False, get_meta=True, w_s=09:00, w_e=17:00
+2026-03-04 09:12:37 - INFO - Pobrano słowniki: 42 projektów, 13 charakterów, 36 opisów
+2026-03-04 09:17:55 - INFO - Uruchomienie aplikacji TrackMyDay
+2026-03-04 09:18:00 - INFO - Uruchomienie aplikacji TrackMyDay
+2026-03-04 09:18:00 - INFO - Uruchomienie aplikacji TrackMyDay
+2026-03-04 09:18:01 - INFO - Rozpoczęto zadanie: _MULTICONTROL (SYSTEMOWE) - start 09:00
+2026-03-04 09:18:01 - INFO - Uruchomienie aplikacji TrackMyDay
+2026-03-04 11:44:01 - INFO - Uruchomienie aplikacji TrackMyDay
+2026-03-04 11:44:02 - INFO - Zamknięto zadanie: _MULTICONTROL (SYSTEMOWE) - 2.75h
+2026-03-04 11:44:02 - INFO - Uruchomienie aplikacji TrackMyDay
+2026-03-04 16:24:03 - INFO - Uruchomienie aplikacji TrackMyDay
+2026-03-04 16:24:03 - INFO - Pobieranie słowników z Excela
+2026-03-04 16:24:03 - INFO - Excel worker: push_data=False, get_meta=True, w_s=09:00, w_e=17:00
+2026-03-04 16:24:31 - INFO - Uruchomienie aplikacji TrackMyDay
+2026-03-04 16:24:31 - INFO - Pobieranie słowników z Excela
+2026-03-04 16:24:31 - INFO - Excel worker: push_data=False, get_meta=True, w_s=09:00, w_e=17:00
+2026-03-04 16:24:46 - INFO - Pobrano słowniki: 42 projektów, 13 charakterów, 36 opisów
+2026-03-04 16:25:15 - INFO - Uruchomienie aplikacji TrackMyDay
+2026-03-04 16:25:15 - INFO - Pobieranie słowników z Excela
+2026-03-04 16:25:15 - INFO - Excel worker: push_data=False, get_meta=True, w_s=09:00, w_e=17:00
+2026-03-04 16:25:25 - INFO - Pobrano słowniki: 42 projektów, 13 charakterów, 36 opisów
+2026-03-04 16:25:34 - INFO - Uruchomienie aplikacji TrackMyDay
+2026-03-04 16:25:41 - INFO - Uruchomienie aplikacji TrackMyDay
+2026-03-04 16:25:44 - INFO - Uruchomienie aplikacji TrackMyDay
+2026-03-04 16:25:49 - INFO - Uruchomienie aplikacji TrackMyDay
+2026-03-04 16:25:52 - INFO - Uruchomienie aplikacji TrackMyDay
+2026-03-04 16:25:52 - INFO - Zapisano ręcznie: _MULTICONTROL (ADMINISTRACJA) - 1.0h (16:00-17:00)
+2026-03-04 16:25:52 - INFO - Uruchomienie aplikacji TrackMyDay
+2026-03-04 16:58:17 - INFO - Uruchomienie aplikacji TrackMyDay
+2026-03-04 16:58:17 - INFO - Załadowano słowniki z cache: 0 projektów, 0 charakterów, 0 opisów
+2026-03-04 17:10:32 - INFO - Uruchomienie aplikacji TrackMyDay
+2026-03-04 17:10:32 - INFO - Załadowano słowniki z cache: 0 projektów, 0 charakterów, 0 opisów
+2026-03-04 17:10:43 - INFO - Uruchomienie aplikacji TrackMyDay
+2026-03-04 17:10:43 - INFO - Excel worker: push_data=False, get_meta=True, w_s=09:00, w_e=17:00
+2026-03-04 17:11:22 - INFO - Zaktualizowano słowniki: 42 projektów, 13 charakterów, 36 opisów
+2026-03-04 17:11:51 - INFO - Uruchomienie aplikacji TrackMyDay
+2026-03-04 17:11:51 - INFO - Excel worker: push_data=True, get_meta=False, w_s=09:00, w_e=17:00
+2026-03-04 17:12:22 - INFO - Zapis do Excela zakończony sukcesem
+2026-03-04 17:12:24 - INFO - Zakończono dzień, zapisano 3 zadań do Excela
+2026-03-04 17:12:24 - INFO - Godzina 16:55 już minęła, wysyłam natychmiast
+2026-03-04 17:12:24 - INFO - Rozpoczęcie wysyłania raportu e-mail
+2026-03-04 17:12:24 - INFO - EXCEL_PATH: https://pidpolska-my.sharepoint.com/personal/d_swiatek_multicontrol_com/Documents/CARGO/EWIDENCJA_MC/KF%20-%20EWIDENCJA%20-%202026_v2.xlsm
+2026-03-04 17:12:24 - INFO - MANAGER_EMAIL: d.swiatek@multicontrol.com
+2026-03-04 17:12:24 - INFO - USER_INITIALS: KF
+2026-03-04 17:12:30 - ERROR - Błąd planowania e-maila: Open.Worksheets
+2026-03-04 17:17:21 - INFO - Rozpoczęcie wysyłania raportu e-mail
+2026-03-04 17:17:21 - INFO - EXCEL_PATH: https://pidpolska-my.sharepoint.com/personal/d_swiatek_multicontrol_com/Documents/CARGO/EWIDENCJA_MC/KF%20-%20EWIDENCJA%20-%202026_v2.xlsm
+2026-03-04 17:17:21 - INFO - MANAGER_EMAIL: d.swiatek@multicontrol.com
+2026-03-04 17:17:21 - INFO - USER_INITIALS: KF
+2026-03-04 17:17:41 - INFO - Próba połączenia z Outlook...
+2026-03-04 17:17:45 - INFO - Uruchomiono nową instancję Outlook
+2026-03-04 17:17:47 - INFO - Wysyłam email...
+2026-03-04 17:17:47 - INFO - Raport wysłany pomyślnie na adres: d.swiatek@multicontrol.com
+2026-03-04 17:17:47 - INFO - Kopia UDW wysłana na adres: krzysztof.filipowicz@yahoo.com
+2026-03-04 17:35:52 - INFO - Uruchomienie aplikacji TrackMyDay
+2026-03-04 17:35:52 - INFO - Załadowano słowniki z cache: 42 projektów, 13 charakterów, 36 opisów
+2026-03-04 17:36:15 - INFO - Uruchomienie aplikacji TrackMyDay
+2026-03-04 17:36:15 - INFO - Excel worker: push_data=True, get_meta=False, w_s=09:00, w_e=17:00
+2026-03-04 17:36:44 - INFO - Zapis do Excela zakończony sukcesem
+2026-03-04 17:36:46 - INFO - Zakończono dzień, zapisano 3 zadań do Excela
+2026-03-04 17:36:46 - INFO - Godzina 16:55 już minęła, wysyłam natychmiast
+2026-03-04 17:36:46 - INFO - Rozpoczęcie wysyłania raportu e-mail
+2026-03-04 17:36:46 - INFO - EXCEL_PATH: https://pidpolska-my.sharepoint.com/personal/d_swiatek_multicontrol_com/Documents/CARGO/EWIDENCJA_MC/KF%20-%20EWIDENCJA%20-%202026_v2.xlsm
+2026-03-04 17:36:46 - INFO - MANAGER_EMAIL: d.swiatek@multicontrol.com
+2026-03-04 17:36:46 - INFO - USER_INITIALS: KF
+2026-03-04 17:36:46 - INFO - COM zainicjalizowany dla wątku
+2026-03-04 17:36:46 - INFO - Próba otwarcia Excela...
+2026-03-04 17:36:50 - ERROR - Błąd podczas pracy z Excelem w send_formatted_mail: (-2147417848, 'Wywołany obiekt odłączył się od swoich klientów.', None, None)
+2026-03-04 17:36:50 - ERROR - Szczegóły błędu Excel: Traceback (most recent call last):
+  File "C:\Users\KrzysztofFilipowicz\SKRYPTY\EWIDENCJA CZASU PRACY\app.py", line 457, in send_formatted_mail
+    excel.Visible = False
+    ^^^^^^^^^^^^^
+  File "C:\Users\KrzysztofFilipowicz\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\win32com\client\dynamic.py", line 677, in __setattr__
+    self._oleobj_.Invoke(entry.dispid, 0, invoke_type, 0, value)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pywintypes.com_error: (-2147417848, 'Wywołany obiekt odłączył się od swoich klientów.', None, None)
+
+2026-03-04 17:36:50 - WARNING - Błąd podczas zamykania Excel: Excel.Application.Quit
+2026-03-04 17:36:50 - WARNING - Błąd podczas zamykania Excel: Excel.Application.Quit
+2026-03-04 17:55:39 - INFO - Uruchomienie aplikacji TrackMyDay
+2026-03-04 17:55:40 - INFO - Załadowano słowniki z cache: 42 projektów, 13 charakterów, 36 opisów
+2026-03-04 17:56:06 - INFO - Uruchomienie aplikacji TrackMyDay
+2026-03-04 17:56:06 - INFO - Załadowano słowniki z cache: 42 projektów, 13 charakterów, 36 opisów
+2026-03-04 17:56:15 - INFO - Uruchomienie aplikacji TrackMyDay
+2026-03-04 17:56:50 - INFO - Uruchomienie aplikacji TrackMyDay
+2026-03-04 17:56:51 - INFO - Excel worker: push_data=True, get_meta=False, w_s=09:00, w_e=18:00
+2026-03-04 17:57:41 - INFO - Zapis do Excela zakończony sukcesem
+2026-03-04 17:57:41 - INFO - Aktualizacja cache dla raportu email
+2026-03-04 17:57:42 - INFO - Zaktualizowano cache dla raportu email: 32 wpisów
+2026-03-04 17:57:43 - INFO - Cache email zaktualizowany po zapisie do Excela
+2026-03-04 17:58:09 - INFO - Uruchomienie aplikacji TrackMyDay
+2026-03-04 17:58:10 - INFO - Załadowano słowniki z cache: 42 projektów, 13 charakterów, 36 opisów
+2026-03-04 17:59:49 - INFO - Uruchomienie aplikacji TrackMyDay
+2026-03-04 17:59:50 - INFO - Uruchomienie aplikacji TrackMyDay
+2026-03-04 17:59:51 - INFO - Excel worker: push_data=True, get_meta=False, w_s=09:00, w_e=18:00
+2026-03-04 18:00:08 - INFO - Zapis do Excela zakończony sukcesem
+2026-03-04 18:00:08 - INFO - Aktualizacja cache dla raportu email
+2026-03-04 18:00:09 - INFO - Zaktualizowano cache dla raportu email: 32 wpisów
+2026-03-04 18:00:10 - INFO - Cache email zaktualizowany po zapisie do Excela
+2026-03-04 18:09:03 - INFO - Uruchomienie aplikacji TrackMyDay
+2026-03-04 18:09:03 - INFO - Załadowano słowniki z cache: 42 projektów, 13 charakterów, 36 opisów
+2026-03-04 18:09:10 - INFO - Uruchomienie aplikacji TrackMyDay
+2026-03-04 18:09:14 - INFO - Uruchomienie aplikacji TrackMyDay
+2026-03-04 18:09:14 - INFO - Excel worker: push_data=True, get_meta=False, w_s=09:00, w_e=18:00
+2026-03-04 18:09:27 - INFO - Zapis do Excela zakończony sukcesem
+2026-03-04 18:09:27 - INFO - Dane zapisane do Excela, cache wymaga aktualizacji
+2026-03-04 18:09:29 - INFO - Zakończono dzień, zapisano 3 zadań do Excela
+2026-03-04 18:09:29 - INFO - Godzina 17:55 już minęła, wysyłam natychmiast
+2026-03-04 18:09:29 - INFO - Rozpoczęcie wysyłania raportu e-mail z cache
+2026-03-04 18:09:29 - INFO - EXCEL_PATH: https://pidpolska-my.sharepoint.com/personal/d_swiatek_multicontrol_com/Documents/CARGO/EWIDENCJA_MC/KF%20-%20EWIDENCJA%20-%202026_v2.xlsm
+2026-03-04 18:09:29 - INFO - MANAGER_EMAIL: d.swiatek@multicontrol.com
+2026-03-04 18:09:29 - INFO - USER_INITIALS: KF
+2026-03-04 18:09:29 - INFO - Używam cache z 2026-03-04 18:00:09 (32 wpisów)
+2026-03-04 18:09:29 - INFO - Próba połączenia z Outlook...
+2026-03-04 18:09:40 - INFO - Uruchomienie aplikacji TrackMyDay
+2026-03-04 18:09:41 - INFO - Załadowano słowniki z cache: 42 projektów, 13 charakterów, 36 opisów
+2026-03-04 18:09:42 - INFO - Uruchomiono nową instancję Outlook
+2026-03-04 18:09:44 - INFO - Wysyłam email...
+2026-03-04 18:09:44 - INFO - Raport wysłany pomyślnie na adres: d.swiatek@multicontrol.com
+2026-03-04 18:09:44 - INFO - Kopia UDW wysłana na adres: krzysztof.filipowicz@yahoo.com
+2026-03-04 18:09:44 - INFO - COM zwolniony
+2026-03-04 18:14:20 - INFO - Uruchomienie aplikacji TrackMyDay
+2026-03-04 18:14:20 - INFO - Załadowano słowniki z cache: 42 projektów, 13 charakterów, 36 opisów
+2026-03-04 18:14:24 - INFO - Uruchomienie aplikacji TrackMyDay
+2026-03-04 18:14:24 - INFO - Załadowano słowniki z cache: 42 projektów, 13 charakterów, 36 opisów
+2026-03-04 18:14:39 - INFO - Uruchomienie aplikacji TrackMyDay
+2026-03-04 18:14:39 - INFO - Załadowano słowniki z cache: 42 projektów, 13 charakterów, 36 opisów

@@ -1,0 +1,80 @@
+[
+    {
+        "F": "CP116 DEMO Mobile 2026",
+        "H": "R&D",
+        "I": "RAMIE DETEKCYJNE",
+        "date": "2026-02-27"
+    },
+    {
+        "F": "_MULTICONTROL",
+        "H": "ADMINISTRACJA",
+        "I": "SPOTKANIA / KONSULTACJE",
+        "date": "2026-02-27"
+    },
+    {
+        "F": "_MULTICONTROL",
+        "H": "SYSTEMOWE",
+        "I": "POBOCZNE",
+        "date": "2026-02-27"
+    },
+    {
+        "F": "_ERP",
+        "H": "TESTY",
+        "I": "PRÓBY/ TESTY",
+        "date": "2026-02-26"
+    },
+    {
+        "F": "_MULTICONTROL",
+        "H": "SYSTEMOWE",
+        "I": "ADMINISTRACJA",
+        "date": "2026-03-04"
+    },
+    {
+        "F": "_MULTICONTROL",
+        "H": "PROJEKTOWE",
+        "I": "SPOTKANIA / KONSULTACJE",
+        "date": "2026-02-26"
+    },
+    {
+        "F": "CP116 DEMO Mobile 2026",
+        "H": "R&D",
+        "I": "ADMINISTRACJA",
+        "date": "2026-02-26"
+    },
+    {
+        "F": "_MULTICONTROL",
+        "H": "ADMINISTRACJA",
+        "I": "ADMINISTRACJA",
+        "date": "2026-02-13"
+    },
+    {
+        "F": "CP116 DEMO Mobile 2026",
+        "H": "R&D",
+        "I": "KONCEPCJA / LAYOUT",
+        "date": "2026-02-12"
+    },
+    {
+        "F": "CP116 DEMO Mobile 2026",
+        "H": "R&D",
+        "I": "ZŁOŻENIA GŁÓWNE",
+        "date": "2026-02-11"
+    },
+    {
+        "F": "_ERP",
+        "H": "INNE",
+        "I": "PRÓBY/ TESTY",
+        "date": "2026-01-21"
+    },
+    {
+        "F": "_MULTICONTROL",
+        "H": "ADMINISTRACJA",
+        "I": "INSTRUKCJA / DOKUMENTACJA TECH.",
+        "date": "2026-01-09"
+    },
+    {
+        "F": "_URLOP",
+        "H": "URLOP",
+        "I": "URLOP",
+        "date": "2026-01-07"
+    }
+]

@@ -1,0 +1,131 @@
+========================================
+TRACKMYDAY - EWIDENCJA CZASU PRACY
+========================================
+
+INSTALACJA I URUCHOMIENIE
+-------------------------
+
+1. Upewnij się, że masz zainstalowane:
+   - Python 3.8 lub nowszy
+   - Microsoft Outlook (do wysyłki raportów)
+   - Microsoft Excel (do odczytu/zapisu danych)
+
+2. Zainstaluj wymagane biblioteki:
+   otwórz cmd/powershell w folderze aplikacji i uruchom:
+   ```
+   pip install streamlit pandas pywin32 python-dotenv
+   ```
+
+3. Skonfiguruj plik .env (już powinien istnieć):
+   - EXCEL_PATH=ścieżka_do_twojego_excela.xlsx
+   - MANAGER_EMAIL=email_menadżera@firma.com
+   - USER_INITIALS=Twoje_Inicjały
+   - PRIVATE_EMAIL=twój_prywatny@email.com (opcjonalnie)
+
+SPOSOBY URUCHOMIENIA
+--------------------
+
+A. DLA CODZIENNEGO UŻYTKU:
+   ------------------------
+   Kliknij dwukrotnie na:
+   1. SILENT_START.vbs - uruchamia aplikację w tle bez okna konsoli
+      * Po uruchomieniu pokaże się okno informacyjne
+      * Aplikacja będzie dostępna pod: http://localhost:8501
+      * Logi aplikacji: server_log.txt
+      * Logi techniczne Streamlit: streamlit_output.txt
+
+B. DLA DEBUGOWANIA/ROZWIĄZYWANIA PROBLEMÓW:
+   -----------------------------------------
+   Kliknij dwukrotnie na:
+   1. START.bat - uruchamia aplikację z widocznym oknem konsoli
+      * Pokazuje postęp uruchamiania
+      * Wyświetla błędy w konsoli
+      * Logi aplikacji: server_log.txt
+      * Logi techniczne Streamlit: streamlit_output.txt
+   2. TEST_EMAIL.bat - testuje wysyłkę e-mail bez uruchamiania całej aplikacji
+
+ZAMYKANIE APLIKACJI
+-------------------
+
+1. Kliknij dwukrotnie STOP.bat
+   * Zamknie serwer na porcie 8501
+   * Zamknie wszystkie procesy Python związane z aplikacją
+   * Wyczyści stare procesy (dla kompatybilności)
+
+2. Alternatywnie: zamknij okno konsoli (jeśli używasz START.bat)
+
+WAŻNE FUNKCJONALNOŚCI
+---------------------
+
+1. ZAPIS DO EXCELA:
+   * Aplikacja automatycznie zapisuje dane do wskazanego pliku Excel
+   * Format: arkusz "CAŁY ROK", kolumny: Data, Start, Koniec, Projekt (F), Charakter (H), Opis (I), Godziny (J)
+
+2. WYSYŁKA RAPORTU E-MAIL:
+   * Po kliknięciu "ZAKOŃCZ DZIEŃ" raport jest planowany na 5 minut przed końcem dnia
+   * Raport zawiera ostatnie 20 dni pracy w formacie HTML
+   * Wysyłany na email menadżera + kopia na prywatny email (jeśli skonfigurowano)
+   * Wysyłka działa w tle bez potrzeby osobnego procesu
+
+3. ZARZĄDZANIE ZADANIAMI:
+   * Start zadania - rozpoczyna mierzenie czasu
+   * Zapis ręczny - zapisuje przedział czasowy
+   * DMA - zadanie domyślne na pozostały czas
+   * Baza setów - zapamiętuje często używane kombinacje Projekt-Charakter-Opis
+
+4. ROTACJA LOGÓW:
+   * server_log.txt - automatyczna rotacja przy osiągnięciu 5MB
+   * streamlit_output.txt - nadpisywany przy każdym uruchomieniu (zawiera tylko bieżącą sesję)
+   * Zachowywane są archiwalne kopie (server_log.txt.1, .2, .3...)
+   * Stare pliki guard_log.txt są automatycznie usuwane
+
+ROZWIĄZYWANIE PROBLEMÓW
+-----------------------
+
+1. APLIKACJA NIE URUCHAMIA SIĘ:
+   * Sprawdź czy Python jest w PATH: w cmd wpisz "python --version"
+   * Sprawdź czy port 8501 nie jest zajęty: uruchom STOP.bat i spróbuj ponownie
+   * Sprawdź logi w server_log.txt
+
+2. PROBLEMY Z EXCELEM:
+   * Upewnij się, że plik Excel nie jest otwarty w innym programie
+   * Sprawdź czy ścieżka w .env jest poprawna
+   * Upewnij się, że masz uprawnienia do zapisu
+
+3. PROBLEMY Z E-MAILEM:
+   * Upewnij się, że Outlook jest uruchomiony
+   * Sprawdź czy jesteś zalogowany w Outlook
+   * Raport wysyła się 5 minut przed końcem dnia - poczekaj lub przetestuj ustawiając wcześniejszą godzinę
+
+PLIKI APLIKACJI
+---------------
+
+* app.py - główna aplikacja Streamlit
+* .env - konfiguracja (ścieżki, emaile)
+* START.bat - uruchomienie z konsolą
+* STOP.bat - zamknięcie aplikacji
+* SILENT_START.vbs - uruchomienie w tle
+* server_log.txt - logi aplikacji (automatyczna rotacja przy 5MB)
+* streamlit_output.txt - logi techniczne Streamlit (nadpisywany przy każdym uruchomieniu)
+* sets_cache.json - cache często używanych zadań
+* today_buffer.json - bufor dzisiejszych zadań
+* active_task.json - aktualnie wykonywane zadanie
+* dma_config.json - konfiguracja zadania domyślnego
+* TEST_EMAIL.bat - narzędzie do testowania wysyłki e-mail
+* INSTRUKCJE.txt - ten plik
+
+BEZPIECZEŃSTWO
+--------------
+
+* Plik .env zawiera poufne dane - nie udostępniaj go
+* Logi mogą zawierać informacje o zadaniach - zabezpiecz folder
+* Aplikacja wymaga dostępu do Excela i Outlook - używaj na zaufanym komputerze
+
+POMOC/KONTAKT
+-------------
+
+W przypadku problemów sprawdź logi w server_log.txt lub skontaktuj się z developerm.
+
+========================================
+OSTATNIA AKTUALIZACJA: 2025-02-28
+========================================
