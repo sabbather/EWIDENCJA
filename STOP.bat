@@ -10,20 +10,20 @@ for /f "tokens=5" %%a in ('netstat -ano ^| findstr :8501 ^| findstr LISTENING') 
     echo Znaleziono proces PID: %%a
     taskkill /F /PID %%a >nul 2>&1
     if errorlevel 1 (
-        echo   -> Nie uda?o si? zamkn??.
+    echo   -^> Nie uda?o si? zamkn??.
     ) else (
-        echo   -> Proces %%a zosta? zamkni?ty.
+        echo   -^> Proces %%a zosta? zamkni?ty.
     )
 )
 
 echo [2/3] Zamykanie proces?w Python...
 taskkill /F /IM python.exe >nul 2>&1
 taskkill /F /IM pythonw.exe >nul 2>&1
-echo   -> Polecenie zamkni?cia wys?ane.
+echo   -^> Polecenie zamkni?cia wys?ane.
 
 echo [3/3] Czyszczenie...
 del /F /Q port_8501_pids.tmp cmdline.tmp guard_pids.tmp 2>nul
-echo   -> Pliki tymczasowe usuni?te.
+echo   -^> Pliki tymczasowe usuni?te.
 
 echo.
 echo ========================================

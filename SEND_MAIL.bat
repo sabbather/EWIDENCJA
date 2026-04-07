@@ -10,11 +10,11 @@ echo [1/3] Checking if app is running...
 netstat -ano | findstr ":8501" >nul
 if NOT errorlevel 1 goto server_running
 
-echo   -> Server not running (port 8501 free).
+echo   -^> Server not running (port 8501 free).
 goto check_done
 
 :server_running
-echo   -> Warning: Server running on port 8501.
+echo   -^> Warning: Server running on port 8501.
 echo        Recommended to stop before sending.
 echo.
 set /p choice=Continue? (Y/N): 

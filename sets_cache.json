@@ -1,15 +1,69 @@
 [
     {
+        "F": "_MULTICONTROL",
+        "H": "SYSTEMOWE",
+        "I": "ADMINISTRACJA",
+        "date": "2026-04-01"
+    },
+    {
         "F": "CP116 DEMO Mobile 2026",
         "H": "R&D",
         "I": "RAMIE DETEKCYJNE",
-        "date": "2026-02-27"
+        "date": "2026-04-01"
+    },
+    {
+        "F": "_MULTICONTROL",
+        "H": "PROJEKTOWE",
+        "I": "INSTRUKCJA / DOKUMENTACJA TECH.",
+        "date": "2026-04-02"
+    },
+    {
+        "F": "_SZKOLENIE",
+        "H": "INNE",
+        "I": "SZKOLENIA",
+        "date": "2026-03-27"
+    },
+    {
+        "F": "CP116 DEMO Mobile 2026",
+        "H": "KONSULTACJA PROJEKTOWA",
+        "I": "RAMIE DETEKCYJNE",
+        "date": "2026-03-20"
+    },
+    {
+        "F": "_MULTICONTROL",
+        "H": "PROJEKTOWE",
+        "I": "WYCENA",
+        "date": "2026-03-19"
+    },
+    {
+        "F": "CP115 DEMO Portal 2026",
+        "H": "KONSULTACJA PRODUKCJA",
+        "I": "INSTRUKCJA / DOKUMENTACJA TECH.",
+        "date": "2026-03-19"
+    },
+    {
+        "F": "CP115 DEMO Portal 2026",
+        "H": "PROJEKTOWE",
+        "I": "INSTRUKCJA / DOKUMENTACJA TECH.",
+        "date": "2026-03-19"
+    },
+    {
+        "F": "CP116 DEMO Mobile 2026",
+        "H": "R&D",
+        "I": "SPOTKANIA / KONSULTACJE",
+        "date": "2026-03-13"
     },
     {
         "F": "_MULTICONTROL",
         "H": "ADMINISTRACJA",
         "I": "SPOTKANIA / KONSULTACJE",
-        "date": "2026-02-27"
+        "date": "2026-03-13"
+    },
+    {
+        "F": "CP103 GDYNIA Gantry 2022",
+        "H": "KONSULTACJA ZAOPATRZENIE",
+        "I": "INSTALACJA",
+        "date": "2026-03-06"
     },
     {
         "F": "_MULTICONTROL",
@@ -22,12 +76,6 @@
         "H": "TESTY",
         "I": "PRÓBY/ TESTY",
         "date": "2026-02-26"
-    },
-    {
-        "F": "_MULTICONTROL",
-        "H": "SYSTEMOWE",
-        "I": "ADMINISTRACJA",
-        "date": "2026-03-04"
     },
     {
         "F": "_MULTICONTROL",

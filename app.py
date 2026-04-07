@@ -130,6 +130,8 @@ PRIVATE_EMAIL = os.getenv("PRIVATE_EMAIL", "")
 
 # Lock dla operacji Excel (COM nie jest thread-safe)
 excel_lock = threading.Lock()
+# Lock dla operacji Outlook (COM nie jest thread-safe)
+outlook_lock = threading.Lock()
 
 # --- LOGIKA LOKALNA ---
 def load_json(path, default=None):
@@ -509,96 +511,128 @@ def excel_worker(push_data=None, get_meta=False, w_s="09:00", w_e="17:00"):
         return res
 
 # --- CACHE DLA RAPORTU E-MAIL ---
-def update_email_cache():
-    """Aktualizuj cache danych do raportu email."""
+def update_email_cache(manage_com=True):
+    """Aktualizuj cache danych do raportu email.
+    
+    Parameters:
+    manage_com (bool): Jeśli True, zarządza inicjalizacją/zwolnieniem COM.
+                      Ustaw False jeśli wywoływana z funkcji która już zarządza COM.
+    """
     log_event("INFO", "Aktualizacja cache dla raportu email")
     
     # Użyj locka dla operacji Excel (COM nie jest thread-safe)
     with excel_lock:
-        pythoncom.CoInitialize()
+        if manage_com:
+            pythoncom.CoInitialize()
         excel = None
         wb = None
         data = None
         
-        try:
-            # Pobierz dane z Excela
-            excel = win32com.client.Dispatch("Excel.Application")
-            excel.Visible = False
-            excel.DisplayAlerts = False
-            wb = excel.Workbooks.Open(URL)
-            time.sleep(1)
-            ws = wb.Worksheets("CAŁY ROK")
-            
-            last_r = ws.Cells(ws.Rows.Count, 1).End(-4162).Row
-            data = ws.Range(ws.Cells(1, 1), ws.Cells(last_r, 10)).Value
-            
-            # Przetwarzanie danych
-            raw_rows = list(data[1:])
-            cleaned_rows = []
-            
-            for row in raw_rows:
-                row_list = list(row)
-                val = row_list[0]
-                if val and hasattr(val, 'year') and hasattr(val, 'month') and hasattr(val, 'day'):
-                    row_list[0] = f"{val.year}-{val.month:02d}-{val.day:02d}"
-                cleaned_rows.append(row_list)
-
-            df = pd.DataFrame(cleaned_rows, columns=data[0])
-            df.iloc[:, 0] = pd.to_datetime(df.iloc[:, 0], errors='coerce')
-            df = df.dropna(subset=[df.columns[0]]) 
-            
-            # Filtrowanie pustych dni i weekendów bez pracy
-            df = df.dropna(subset=[df.columns[5]])
-            df = df[df.iloc[:, 5].astype(str).str.strip() != ""]
-            df = df[df.iloc[:, 5].astype(str).str.strip() != "None"]
-            
-            # Sortowanie
-            df = df.sort_values(by=df.columns[0], ascending=False)
-            
-            # Ostatnie 20 dni
-            top_20_dates = df[df.columns[0]].unique()[:20]
-            df = df[df[df.columns[0]].isin(top_20_dates)]
-            
-            # Przygotowanie danych do cache
-            cache_data = {
-                "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-                "data": []
-            }
-            
-            for date, group in df.groupby(df.columns[0], sort=False):
-                for _, row in group.iterrows():
-                    cache_data["data"].append({
-                        "date": date.strftime("%Y-%m-%d"),
-                        "project": str(row.iloc[5]) if pd.notna(row.iloc[5]) else "",
-                        "character": str(row.iloc[7]) if pd.notna(row.iloc[7]) else "",
-                        "description": str(row.iloc[8]) if pd.notna(row.iloc[8]) else "",
-                        "hours": float(row.iloc[9]) if pd.notna(row.iloc[9]) else 0.0
-                    })
-            
-            # Zapisz cache
-            save_json(EMAIL_CACHE_FILE, cache_data)
-            log_event("INFO", f"Zaktualizowano cache dla raportu email: {len(cache_data['data'])} wpisów")
-            
-        except Exception as e:
-            log_event("ERROR", f"Błąd aktualizacji cache email: {e}")
-            import traceback
-            error_details = traceback.format_exc()
-            log_event("ERROR", f"Szczegóły błędu cache: {error_details}")
-        finally:
+        retries = 3
+        for attempt in range(retries):
             try:
-                if wb:
-                    try: 
-                        wb.Close(False)
-                    except Exception as close_error:
-                        log_event("WARNING", f"Błąd przy zamykaniu skoroszytu Excel w update_email_cache: {close_error}")
-                if excel:
-                    try:
-                        excel.Quit()
-                    except Exception as quit_error:
-                        log_event("WARNING", f"Błąd przy zamykaniu Excel w update_email_cache: {quit_error}")
-            except Exception as final_error:
-                log_event("WARNING", f"Błąd w sekcji finally update_email_cache: {final_error}")
-            finally:
+                log_event("INFO", f"Próba {attempt + 1}/{retries} aktualizacji cache z Excela")
+                # Pobierz dane z Excela
+                excel = win32com.client.Dispatch("Excel.Application")
+                excel.Visible = False
+                excel.DisplayAlerts = False
+                wb = excel.Workbooks.Open(URL)
+                time.sleep(1)
+                ws = wb.Worksheets("CAŁY ROK")
+                
+                last_r = ws.Cells(ws.Rows.Count, 1).End(-4162).Row
+                data = ws.Range(ws.Cells(1, 1), ws.Cells(last_r, 10)).Value
+                
+                # Przetwarzanie danych
+                raw_rows = list(data[1:])
+                cleaned_rows = []
+                
+                for row in raw_rows:
+                    row_list = list(row)
+                    val = row_list[0]
+                    if val and hasattr(val, 'year') and hasattr(val, 'month') and hasattr(val, 'day'):
+                        row_list[0] = f"{val.year}-{val.month:02d}-{val.day:02d}"
+                    cleaned_rows.append(row_list)
+
+                df = pd.DataFrame(cleaned_rows, columns=data[0])
+                df.iloc[:, 0] = pd.to_datetime(df.iloc[:, 0], errors='coerce')
+                df = df.dropna(subset=[df.columns[0]]) 
+                
+                # Filtrowanie pustych dni i weekendów bez pracy
+                df = df.dropna(subset=[df.columns[5]])
+                df = df[df.iloc[:, 5].astype(str).str.strip() != ""]
+                df = df[df.iloc[:, 5].astype(str).str.strip() != "None"]
+                
+                # Sortowanie
+                df = df.sort_values(by=df.columns[0], ascending=False)
+                
+                # Ostatnie 20 dni
+                top_20_dates = df[df.columns[0]].unique()[:20]
+                df = df[df[df.columns[0]].isin(top_20_dates)]
+                
+                # Przygotowanie danych do cache
+                cache_data = {
+                    "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+                    "data": []
+                }
+                
+                for date, group in df.groupby(df.columns[0], sort=False):
+                    for _, row in group.iterrows():
+                        cache_data["data"].append({
+                            "date": date.strftime("%Y-%m-%d"),
+                            "project": str(row.iloc[5]) if pd.notna(row.iloc[5]) else "",
+                            "character": str(row.iloc[7]) if pd.notna(row.iloc[7]) else "",
+                            "description": str(row.iloc[8]) if pd.notna(row.iloc[8]) else "",
+                            "hours": float(row.iloc[9]) if pd.notna(row.iloc[9]) else 0.0
+                        })
+                
+                # Zapisz cache
+                save_json(EMAIL_CACHE_FILE, cache_data)
+                log_event("INFO", f"Zaktualizowano cache dla raportu email: {len(cache_data['data'])} wpisów")
+                break  # Sukces, wyjdź z pętli retries
+                
+            except Exception as e:
+                log_event("WARNING", f"Próba {attempt + 1}/{retries} nieudana: {e}")
+                if attempt == retries - 1:  # Ostatnia próba
+                    log_event("ERROR", f"Błąd aktualizacji cache email po {retries} próbach: {e}")
+                    import traceback
+                    error_details = traceback.format_exc()
+                    log_event("ERROR", f"Szczegóły błędu cache: {error_details}")
+                else:
+                    time.sleep(2)  # Czekaj przed kolejną próbą
+                # Spróbuj zamknąć Excel przed kolejną próbą
+                try:
+                    if wb:
+                        try: 
+                            wb.Close(False)
+                        except Exception as close_error:
+                            log_event("WARNING", f"Błąd przy zamykaniu skoroszytu Excel w update_email_cache (próba {attempt + 1}): {close_error}")
+                    if excel:
+                        try:
+                            excel.Quit()
+                        except Exception as quit_error:
+                            log_event("WARNING", f"Błąd przy zamykaniu Excel w update_email_cache (próba {attempt + 1}): {quit_error}")
+                except Exception as final_error:
+                    log_event("WARNING", f"Błąd w sekcji finally update_email_cache (próba {attempt + 1}): {final_error}")
+                excel = None
+                wb = None
+                
+        # Finalne sprzątanie po wszystkich próbach
+        try:
+            if wb:
+                try: 
+                    wb.Close(False)
+                except Exception as close_error:
+                    log_event("WARNING", f"Błąd przy zamykaniu skoroszytu Excel w update_email_cache: {close_error}")
+            if excel:
+                try:
+                    excel.Quit()
+                except Exception as quit_error:
+                    log_event("WARNING", f"Błąd przy zamykaniu Excel w update_email_cache: {quit_error}")
+        except Exception as final_error:
+            log_event("WARNING", f"Błąd w sekcji finally update_email_cache: {final_error}")
+        finally:
+            if manage_com:
                 try:
                     pythoncom.CoUninitialize()
                 except Exception as com_error:
@@ -612,6 +646,9 @@ def send_formatted_mail():
     log_event("INFO", f"EXCEL_PATH: {URL}")
     log_event("INFO", f"MANAGER_EMAIL: {MANAGER_EMAIL}")
     log_event("INFO", f"USER_INITIALS: {USER_INITIALS}")
+    
+    # Inicjalizacja COM dla tego wątku
+    pythoncom.CoInitialize()
     
     # --- CZĘŚĆ 1: POBRANIE DANYCH Z CACHE ---
     cache_data = load_json(EMAIL_CACHE_FILE, None)
@@ -628,13 +665,17 @@ def send_formatted_mail():
             else:
                 log_event("INFO", f"Cache jest za stary: {time_diff.total_seconds()//60} minut")
         except Exception as e:
-            log_event("WARNING", f"Błąd parsowania czasu cache: {e}")
-    
+          log_event("WARNING", f"Błąd parsowania czasu cache: {e}")
+  
     # Jeśli cache nie jest ważny, zaktualizuj go
     if not cache_valid:
         log_event("INFO", "Aktualizuję cache danych z Excela")
-        update_email_cache()
-        cache_data = load_json(EMAIL_CACHE_FILE, None)
+        try:
+            update_email_cache(manage_com=False)
+            cache_data = load_json(EMAIL_CACHE_FILE, None)
+        except Exception as e:
+            log_event("WARNING", f"Nie udało się zaktualizować cache, używam istniejącego (może być nieaktualny): {e}")
+            # cache_data już załadowane wcześniej, kontynuuj
         
         if not cache_data or "data" not in cache_data:
             log_event("ERROR", "Nie udało się załadować danych z cache nawet po aktualizacji")
@@ -671,40 +712,42 @@ def send_formatted_mail():
         
         html += "</table><br><br>"
     
-    html += "</body></html>"
+        html += "</body></html>"
 
     # --- CZĘŚĆ 2: WYSYŁKA E-MAIL ---
     outlook = None
     try:
-        # Użyj EnsureDispatch dla lepszej kompatybilności z Outlook
-        log_event("INFO", "Próba połączenia z Outlook...")
-        try:
-            outlook = win32com.client.GetActiveObject("Outlook.Application")
-            log_event("INFO", "Połączono z aktywnym Outlook")
-        except:
-            outlook = win32com.client.gencache.EnsureDispatch("Outlook.Application")
-            log_event("INFO", "Uruchomiono nową instancję Outlook")
-        
-        # Daj Outlook czas na inicjalizację
-        time.sleep(2)
-        
-        mail = outlook.CreateItem(0)  # 0 = olMailItem
-        mail.Subject = f"#RAPORT - {USER_INITIALS} - {datetime.now().year}"
-        mail.To = MANAGER_EMAIL
-        
-        # --- DODANE UDW Z PLIKU .ENV ---
-        if PRIVATE_EMAIL:
-            mail.BCC = PRIVATE_EMAIL
+        # Użyj locka dla operacji Outlook (COM nie jest thread-safe)
+        with outlook_lock:
+            # Użyj EnsureDispatch dla lepszej kompatybilności z Outlook
+            log_event("INFO", "Próba połączenia z Outlook...")
+            try:
+                outlook = win32com.client.GetActiveObject("Outlook.Application")
+                log_event("INFO", "Połączono z aktywnym Outlook")
+            except:
+                outlook = win32com.client.gencache.EnsureDispatch("Outlook.Application")
+                log_event("INFO", "Uruchomiono nową instancję Outlook")
             
-        mail.HTMLBody = html
-        log_event("INFO", "Wysyłam email...")
-        mail.Send()
-        log_event("INFO", f"Raport wysłany pomyślnie na adres: {MANAGER_EMAIL}")
-        if PRIVATE_EMAIL:
-            log_event("INFO", f"Kopia UDW wysłana na adres: {PRIVATE_EMAIL}")
-        print(f"Raport wysłany pomyślnie na adres: {MANAGER_EMAIL}!")
-        if PRIVATE_EMAIL:
-            print(f"Kopia UDW wysłana na adres: {PRIVATE_EMAIL}!")
+            # Daj Outlook czas na inicjalizację
+            time.sleep(2)
+            
+            mail = outlook.CreateItem(0)  # 0 = olMailItem
+            mail.Subject = f"#RAPORT - {USER_INITIALS} - {datetime.now().year}"
+            mail.To = MANAGER_EMAIL
+            
+            # --- DODANE UDW Z PLIKU .ENV ---
+            if PRIVATE_EMAIL:
+                mail.BCC = PRIVATE_EMAIL
+                
+            mail.HTMLBody = html
+            log_event("INFO", "Wysyłam email...")
+            mail.Send()
+            log_event("INFO", f"Raport wysłany pomyślnie na adres: {MANAGER_EMAIL}")
+            if PRIVATE_EMAIL:
+                log_event("INFO", f"Kopia UDW wysłana na adres: {PRIVATE_EMAIL}")
+            print(f"Raport wysłany pomyślnie na adres: {MANAGER_EMAIL}!")
+            if PRIVATE_EMAIL:
+                print(f"Kopia UDW wysłana na adres: {PRIVATE_EMAIL}!")
     except Exception as e:
         log_event("ERROR", f"Błąd wysyłania e-maila: {e}")
         print(f"Błąd wysyłania e-maila: {e}")

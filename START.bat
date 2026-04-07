@@ -1,5 +1,6 @@
 @echo off
 cd /d "%~dp0"
+setlocal
 
 title TrackMyDay - EWIDENCJA CZASU PRACY
 echo ========================================
@@ -7,40 +8,38 @@ echo  Uruchamianie TrackMyDay - EWIDENCJA CZASU PRACY
 echo ========================================
 echo.
 
-:: Sprawdzenie czy Python jest dostępny
-where python >nul 2>&1
-if %errorlevel% neq 0 (
-    echo ERROR: Python nie znaleziony w zmiennej PATH!
-    echo Sprawdz czy Python jest zainstalowany.
-    pause
-    exit /b 1
+:: Priorytet: lokalny Python 3.13, potem python z PATH
+set "PYTHON_CMD=%LocalAppData%\Programs\Python\Python313\python.exe"
+if not exist "%PYTHON_CMD%" (
+    set "PYTHON_CMD=python"
+    python --version >nul 2>&1
+    if errorlevel 1 (
+        echo ERROR: Nie znaleziono Pythona ani w %LocalAppData% ani w PATH.
+        echo Zainstaluj 3.13 z opcja Add to PATH.
+        pause
+        exit /b 1
+    )
 )
 
-:: Sprawdzenie czy port 8501 jest już zajęty
 echo Sprawdzam czy port 8501 jest wolny...
 netstat -ano | findstr ":8501" | findstr "LISTENING" >nul
 if %errorlevel% equ 0 (
-    echo ERROR: Port 8501 jest już zajęty!
-    echo Prawdopodobnie aplikacja już działa.
-    echo Uruchom STOP.bat aby zamknąć istniejące instancje.
+    echo ERROR: Port 8501 jest juz zajety!
+    echo Prawdopodobnie aplikacja juz dziala.
+    echo Uruchom STOP.bat aby zamknac istniejace instancje.
     pause
     exit /b 1
 )
 
-:: Tworzenie timestamp dla logów
-for /f "tokens=2 delims==" %%a in ('wmic os get localdatetime /value') do set datetime=%%a
-set log_date=%datetime:~0,4%-%datetime:~4,2%-%datetime:~6,2%
-set log_time=%datetime:~8,2%-%datetime:~10,2%-%datetime:~12,2%
-
 echo Uruchamianie aplikacji...
-echo Logi aplikacji będą zapisywane do server_log.txt
-echo Logi Streamlit będą zapisywane do streamlit_output.txt
+echo Logi aplikacji beda zapisywane do server_log.txt
+echo Logi Streamlit beda zapisywane do streamlit_output.txt
 echo.
+echo Uzywam polecenia: %PYTHON_CMD%
 
-:: Uruchomienie aplikacji z zapisem logów Streamlit do oddzielnego pliku (nadpisywanie przy każdym uruchomieniu)
-python -m streamlit run app.py --server.port 8501 --logger.level=error > streamlit_output.txt 2>&1
+call "%PYTHON_CMD%" -m streamlit run app.py --server.port 8501 --logger.level=error > streamlit_output.txt 2>&1
 
 echo.
-echo Aplikacja została zamknięta.
-echo Naciśnij dowolny klawisz aby kontynuować...
+echo Aplikacja zostala zamknieta.
+echo Nacisnij dowolny klawisz aby kontynuowac...
 pause >nul

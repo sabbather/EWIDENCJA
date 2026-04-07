@@ -1,1 +1,11 @@
-.env 
+cd "C:\dev\EWIDENCJA CZASU PRACY"
+@"
+__pycache__/
+*.pyc
+*.log
+streamlit_output.txt
+*.json_cache
+email_cache.json
+server_log.txt
+work_hours_cache.json
+"@ | Out-File -Encoding utf8 .gitignore
